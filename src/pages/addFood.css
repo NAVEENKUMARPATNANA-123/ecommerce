@@ -1,0 +1,57 @@
+.add-food-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff8f0;
+}
+
+.add-food-container h2 {
+  text-align: center;
+  color: #b45309;
+  margin-bottom: 20px;
+}
+
+.add-food-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.add-food-container label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: #431407;
+}
+
+.add-food-container input,
+.add-food-container select,
+.add-food-container textarea {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.add-food-container button {
+  padding: 10px;
+  border-radius: 25px;
+  border: none;
+  background-color: #f59e0b;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.add-food-container button:hover {
+  background-color: #d97706;
+}
+
+.message {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 15px;
+}

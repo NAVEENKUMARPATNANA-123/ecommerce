@@ -8,6 +8,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 .navbar {
+ 
   background-color: #f5d7b7;
   display: flex;
   justify-content: space-between;
@@ -32,6 +33,7 @@ body {
 .cart {
   display: flex;
   align-items: center;
+  gap:15px
 }
 .cart a {
   background-color: #ffb703;
@@ -42,9 +44,25 @@ body {
 }
 
 
-.cart a:hover {
+  .cart a:hover {
+    background-color: #f59e0b;
+  }
+
+.addFood{
+   background-color: #ffb703;
+  color: #3a1f04;
+  
+  border: none;
+  font-weight: bold;
+}
+.addFood:hover{background-color: #f59e0b;}
+.deleteFood{
+   background-color: #ffb703;
+  color: #3a1f04;
+  
+  border: none;
+  font-weight: bold;
+}
+.deleteFood:hover{
   background-color: #f59e0b;
 }
-
-
-

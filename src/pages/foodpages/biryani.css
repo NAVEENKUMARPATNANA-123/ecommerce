@@ -133,3 +133,27 @@
   background-color: #eec6432f;
 
 }
+
+
+
+
+
+
+  .fixed-button-container :hover {
+    background-color: #f59e0b;
+    box-shadow: 0 8px 20px rgba(0, 0, 0);
+  transition: transform 0.3s;
+  }
+
+
+  .fixed-button-container {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000;
+    background-color: #ffb703;
+  color: #3a1f04;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+}
