@@ -3,10 +3,6 @@ import { addToCart } from "../store/slice/slice.tsx";
 import { useDispatch } from "react-redux";
 import './burger.css';
 import { useNavigate } from "react-router-dom";
-
-
-
-
 function Burger(): React.JSX.Element {
     const dispatch = useDispatch();
     const navigate = useNavigate();

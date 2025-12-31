@@ -8,8 +8,6 @@
   margin-bottom: 30px;
   color: #7c2d12;
 }
-
-
 .food-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

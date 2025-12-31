@@ -13,7 +13,10 @@ function Biryani(): React.JSX.Element {
    const biryaniList = products.filter(product => product.category === "biryani");
    console.log(biryaniList)
   return (
-    <div className="biryani-container">
+    <>
+      <h1 className="home-title">🍽️ Biryani</h1>
+      <div className="biryani-container">
+      
       {biryaniList.map((item) => (
         <div className="biryani-card" key={item.id} onClick={() => navigate(`/product/${item.id}`)}>
           <img src={item.img} alt={item.name} />  
@@ -31,6 +34,7 @@ function Biryani(): React.JSX.Element {
         </div>
       ))}
     </div>
+    </>
   );
 }
 

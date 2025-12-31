@@ -1,7 +1,7 @@
 
 .burger-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 25px;
   padding: 30px;
 }
@@ -9,11 +9,10 @@
 
 .burger-card {
   background-color: #fff7ed;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 15px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0);
+  transition: transform 0.3s;
 }
 
 .burger-card:hover {
