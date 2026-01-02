@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./manageFood.css";
-import Navbar from "../components/navbar/navbar.tsx";
-import Footer from "../components/footer/footer.tsx";
+
+
+
 
 interface Product {
   id: string;
@@ -55,19 +56,74 @@ function ManageFood(): React.JSX.Element {
     setEditForm({ ...product });
   };
 
- 
-  const handleSave = async (id: string) => {
-    try {
-      const res = await axios.put(`http://localhost:3000/api/products/${id}`, editForm);
-      setProducts(products.map((p) => (p.id === id ? res.data : p)));
-      setEditingId(null);
-      setEditForm({});
-      alert("Food updated successfully!");
-    } catch (err) {
-      console.error(err);
-      alert("Failed to update food.");
+function getDifferences<T extends Record<string, any>>(original: T,updated: T): Partial<T> {
+  const diff: Partial<T> = {};
+  (Object.keys(updated) as (keyof T)[]).forEach((key) => {
+    if (original[key] !== updated[key]) {
+      diff[key] = updated[key];
     }
-  };
+  });
+
+  return diff;
+}
+
+const handleSave = async (id: string, edited: Product) => {
+  try {
+    const { data: original } = await axios.get<Product>(`http://localhost:3000/api/products/${id}`);
+    const diff = getDifferences(original, edited);
+    console.log(diff)
+  //  const differences = Object.keys(diff).length > 0;
+  //  const differences=Object.keys(diff).length 
+  //  console.log(differences)
+
+const TOTAL_FIELDS = 5;
+const differences = Object.keys(diff).filter(key =>["name", "category", "price", "img", "description"].includes(key)).length;
+const response =
+  differences === TOTAL_FIELDS
+    ? await axios.put(`http://localhost:3000/api/products/${id}`, edited)
+    : await axios.patch(`http://localhost:3000/api/products/${id}`, diff);
+
+// const response = (differences===5) ?  await axios.put(`http://localhost:3000/api/products/${id}`, edited) 
+// :await axios.patch(`http://localhost:3000/api/products/${id}`, diff)
+
+    setProducts(products.map((p) =>p.id === id ? response.data : p));
+
+    setEditingId(null);
+    setEditForm({});
+    alert(`Food updated successfully `);
+  } catch (err) {
+    console.error(err);
+    alert("Failed to update food.");
+  }
+};
+
+
+  // const handleSave = async (id: string,item:Product) => {
+  //   try{
+  //     const data:Product=await axios.get(`http://localhost:3000/api/products/${id}`)
+  //     if( data.id===id){
+  //         const a:Partial<Product>=getDifferences(data,item)
+  //         console.log(a)
+
+  //     }
+  //   }
+  //   catch{
+
+  //   }
+  //   try {
+     
+  //     const res = await axios.put(`http://localhost:3000/api/products/${id}`, editForm);
+  //     setProducts(products.map((p) => (p.id === id ? res.data : p)));
+  //     setEditingId(null);
+  //     setEditForm({});
+  //     alert("Food updated successfully!");
+  //   } catch (err) {
+  //     console.error(err);
+  //     alert("Failed to update food.");
+  //   }
+  // };
+
+
 
   if (loading) return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
 
@@ -88,15 +144,10 @@ function ManageFood(): React.JSX.Element {
                   placeholder="Category"
                   onChange={(e) => setEditForm({ ...editForm, category: e.target.value })}
                 />
-                <input
-                  type="number"
-                  value={editForm.price}
-                  placeholder="Price"
+                <input type="number" value={editForm.price} placeholder="Price"
                   onChange={(e) => setEditForm({ ...editForm, price: Number(e.target.value) })}
                 />
-                <input
-                  type="text"
-                  value={editForm.img}
+                <input type="text" value={editForm.img}
                   placeholder="Image URL"
                   onChange={(e) => setEditForm({ ...editForm, img: e.target.value })}
                 />
@@ -105,12 +156,11 @@ function ManageFood(): React.JSX.Element {
                   placeholder="Description"
                   onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
                 />
-                <button onClick={() => handleSave(item.id)}>Save</button>
+                <button onClick={() => handleSave(item.id, editForm as  Product)}>Save</button>
                 <button onClick={() => setEditingId(null)}>Cancel</button>
-              </div>
-            ) : (
-              <>
-                <h3>{item.name}</h3>
+              </div> ) 
+              :
+               ( <> <h3>{item.name}</h3>
                 <p>Category: {item.category}</p>
                 <p>Price: ₹{item.price}</p>
                 <div className="card-buttons">

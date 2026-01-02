@@ -53,13 +53,13 @@ function AddFood(): React.JSX.Element {
       <form onSubmit={handleSubmit}>
         <label>
           Name:
-          <input type="text" name="name" value={form.name} onChange={handleChange} required />
+          <input type="text" name="name" value={form.name} onChange={handleChange} required  placeholder="Name of the Food"/>
         </label>
 
         <label>
           Category:
           <select name="category" value={form.category} onChange={handleChange} required>
-            <option value="">Select category</option>
+            <option value="">Select category of food</option>
             <option value="biryani">Biryani</option>
             <option value="burger">Burger</option>
             <option value="pizza">Pizza</option>
@@ -69,17 +69,18 @@ function AddFood(): React.JSX.Element {
 
         <label>
           Image URL:
-          <input type="text" name="img" value={form.img} onChange={handleChange} required />
+          <input type="text" name="img" value={form.img} onChange={handleChange} required placeholder="Image Url" />
         </label>
 
         <label>
           Price:
-          <input type="number" name="price" value={form.price} onChange={handleChange} min={0} required />
+          <input type="number" name="price" value={form.price} onChange={handleChange} min={0} required  />
         </label>
 
         <label>
           Description:
-          <textarea name="description" value={form.description} onChange={handleChange} required />
+          <textarea name="description" value={form.description} onChange={handleChange} required  
+          placeholder="Detailed Description"/>
         </label>
 
         <button type="submit" disabled={loading}>
