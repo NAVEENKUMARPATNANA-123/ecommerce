@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/slice/slice.tsx";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/navbar/navbar.tsx";
+import Footer  from "../components/footer/footer.tsx";
 import axios from "axios";
 import "./home.css";
 
@@ -34,39 +36,35 @@ function HomePage(): React.JSX.Element {
   }
 
   return (
-
+       <>
+       
     
     <div className="home-page">
       <h1 className="home-title">🍽️ Explore Our Menu</h1>
 
-      <div className="food-grid">
-        {products.map(item => (
-          <div
-            className="food-card"
-            key={item.id}
-            onClick={() => navigate(`/product/${item.id}`)}
-          >
-            <img src={item.img} alt={item.name} />
+<div className="food-grid">
+  {products.map(item => (
+    <div
+      className="food-card"
+      key={item.id}
+      onClick={() => navigate(`/product/${item.id}`)}>
+      <img src={item.img} alt={item.name} />
 
-            <div className="food-info">
-              <span className={`category-badge ${item.category}`}>
-                {item.category}
-              </span>
+      <div className="food-info">
+        <span className={`category-badge ${item.category}`}>
+          {item.category}
+        </span>
+        <h3>{item.name}</h3>
+        <p className="price">₹{item.price}</p>
 
-              <h3>{item.name}</h3>
-              <p className="price">₹{item.price}</p>
-
-              <button
-                onClick={e => {
-                  e.stopPropagation();
-                  dispatch(
-                    addToCart({
-                      id: item.id,
-                      name: item.name,
-                      img: item.img,
-                      quantity:1,price:item.price?item.price:0,
-                    })
+<button onClick={e => {  e.stopPropagation(); dispatch( addToCart({
+        id: item.id,
+        name: item.name,
+        img: item.img,
+        quantity:1,price:item.price?item.price:0,
+      })
                   );
+                  navigate("/cart");
                 }}
               >
                 Add to Cart
@@ -76,6 +74,8 @@ function HomePage(): React.JSX.Element {
         ))}
       </div>
     </div>
+    
+    </>
   );
 }
 

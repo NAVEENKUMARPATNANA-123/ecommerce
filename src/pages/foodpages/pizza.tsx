@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../store/slice/slice.tsx";
+import Navbar from "../../components/navbar/navbar.tsx";
+import Footer from "../../components/footer/footer.tsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './pizza.css';
@@ -37,7 +38,11 @@ function Pizza(): React.JSX.Element {
   }
 
   return (
-    <FoodRender List={pizzaList} />
+    <>
+      
+      <FoodRender List={pizzaList}  />
+       
+    </>
     // <div className="pizza-container">
     //   {pizzaList.map(item => (
     //     <div

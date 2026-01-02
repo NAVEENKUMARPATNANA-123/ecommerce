@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../store/slice/slice.tsx";
-import { useNavigate } from "react-router-dom";
+import Navbar from "../../components/navbar/navbar.tsx";
+import Footer from "../../components/footer/footer.tsx";
 import axios from "axios";
 import './cooldrinks.css';
 import FoodRender from "../../components/foodRender.tsx";
@@ -16,8 +15,7 @@ interface Product {
 }
 
 function CoolDrinks(): React.JSX.Element {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+ 
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -38,7 +36,11 @@ function CoolDrinks(): React.JSX.Element {
   }
 
   return (
-    <FoodRender List={drinksList} />
+    <>
+      
+      <FoodRender List={drinksList}  />
+      
+    </>
     // <div className="drinks-container">
     //   {drinksList.map(item => (
     //     <div

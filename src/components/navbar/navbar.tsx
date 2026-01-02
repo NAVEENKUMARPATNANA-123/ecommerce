@@ -1,5 +1,5 @@
-import { BrowserRouter , Routes, Route,Link} from 'react-router-dom'
-
+import { Link} from 'react-router-dom'
+import './navbar.css'
 function navbar(): React.JSX.Element{
     return(
         <>

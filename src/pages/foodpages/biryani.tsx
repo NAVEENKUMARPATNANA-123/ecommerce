@@ -1,8 +1,4 @@
 import { useEffect, useState } from "react";
-import { useSelector} from "react-redux";
-
-import { RootState } from "../../store/store.tsx";
-
 import axios from "axios";
 import "./biryani.css";
 import FoodRender from "../../components/foodRender.tsx";
@@ -14,13 +10,9 @@ interface Product {
   price?: number;
   description: string;
 }
-
 function Biryani(): React.JSX.Element {
-
-
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const cartItems = useSelector((state: RootState) => state.cart.items);
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/products")
@@ -28,15 +20,14 @@ function Biryani(): React.JSX.Element {
       .catch(err => console.error("Failed to fetch products", err))
       .finally(() => setLoading(false));
   }, []);
-
   const biryaniList = products.filter(product => product.category === "biryani");
-
   if (loading) {
     return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
   }
-
   return (
-    <FoodRender List={biryaniList}  />
+    <>
+      <FoodRender List={biryaniList}  />
+    </>
   );
 }
 

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import "./addFood.css";
-
+import Footer from "../components/footer/footer.tsx";
+import Navbar from "../components/navbar/navbar.tsx";
 interface Product {
   name: string;
   category: string;
@@ -13,7 +14,7 @@ interface Product {
 function AddFood(): React.JSX.Element {
   const [form, setForm] = useState<Product>({
     name: "",
-    category: "",
+    category: "", 
     img: "",
     price: 0,
     description: "",
@@ -45,6 +46,8 @@ function AddFood(): React.JSX.Element {
   };
 
   return (
+    <>
+   
     <div className="add-food-container">
       <h2>Add New Food Item</h2>
       <form onSubmit={handleSubmit}>
@@ -85,6 +88,8 @@ function AddFood(): React.JSX.Element {
       </form>
       {message && <p className="message">{message}</p>}
     </div>
+    
+    </>
   );
 }
 

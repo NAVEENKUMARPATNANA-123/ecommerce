@@ -9,8 +9,8 @@ import Cooldrinks from './pages/foodpages/cooldrinks.tsx';
 import Cart from './pages/cart.tsx';
 import ProductDetails from './components/productDetails/productDetails.tsx';
 import AddFood from "./pages/addFood.tsx";
-import DeleteFood from "./pages/deleteFood.tsx";
-
+import DeleteFood from "./pages/manageFood.tsx";
+import Footer from './components/footer/footer.tsx';
 
 import Navbar from './components/navbar/navbar.tsx';
 function App():React.JSX.Element {
@@ -18,7 +18,7 @@ function App():React.JSX.Element {
     <div className="App">
           <>
             <BrowserRouter>
-              <Navbar/>
+               <Navbar/>
                 <Routes>
                   <Route path='/' element={<HomePage/>}/>
                   <Route path='/biryani' element={<Biryani/>}/>
@@ -29,8 +29,9 @@ function App():React.JSX.Element {
                   <Route path="/product/:id" element={<ProductDetails />} />
                   <Route path="/add-food" element={<AddFood />} /> 
                   <Route path="/delete-food" element={<DeleteFood />} />
-            </Routes>
-            
+                  </Routes>
+               
+            <Footer/>
             </BrowserRouter>
           </>
     </div>

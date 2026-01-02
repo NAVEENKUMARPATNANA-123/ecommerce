@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/slice/slice.tsx";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../navbar/navbar.tsx";
+import Footer from "../footer/footer.tsx";
 import axios from "axios";
 import "./productDetails.css";
 
@@ -37,6 +39,8 @@ function ProductDetails(): React.JSX.Element {
   if (!product) return <h2 style={{ textAlign: "center" }}>Product not found</h2>;
 
   return (
+    <>
+     
     <div className="product-details">
       <img src={product.img} alt={product.name} />
 
@@ -60,13 +64,13 @@ function ProductDetails(): React.JSX.Element {
           className="add-to-cart-btn"
           onClick={() =>
            {
-             dispatch(
-              addToCart({
-                id: product.id,
-                name: product.name,
-                img: product.img,
-                quantity,
-                price:product.price?product.price:0,
+          dispatch(
+          addToCart({
+            id: product.id,
+            name: product.name,
+            img: product.img,
+            quantity,
+            price:product.price?product.price:0,
               })
               
             )
@@ -80,6 +84,8 @@ function ProductDetails(): React.JSX.Element {
         </button>
       </div>
     </div>
+   
+    </>
   );
 }
 

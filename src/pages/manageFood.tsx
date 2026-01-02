@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./deleteFood.css";
+import "./manageFood.css";
+import Navbar from "../components/navbar/navbar.tsx";
+import Footer from "../components/footer/footer.tsx";
 
 interface Product {
   id: string;
@@ -70,6 +72,8 @@ function ManageFood(): React.JSX.Element {
   if (loading) return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
 
   return (
+    <>
+     
     <div className="manage-food-page">
       <h1>🍽️ Manage Food Items</h1>
       <div className="food-grid">
@@ -123,6 +127,8 @@ function ManageFood(): React.JSX.Element {
         ))}
       </div>
     </div>
+   
+    </>
   );
 }
 
